@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="ShotTracker.Views.NewShotEntryPage"
+             Shell.PresentationMode="ModalAnimated"
+             Title="New Entry"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="true"
+             BackgroundColor="#202020">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#202020" StatusBarStyle="LightContent" />
+    </ContentPage.Behaviors>
+    <ContentPage.Content>
+        <StackLayout Spacing="3" Padding="15">
+            <Label Text="Makes" TextColor="White" FontSize="Medium" />
+            <Entry Text="{Binding Makes, Mode=TwoWay}" TextColor="White" PlaceholderColor="White" FontSize="Medium" Keyboard="Numeric" />
+            <Label Text="Misses" TextColor="White" FontSize="Medium" />
+            <Entry Text="{Binding Misses, Mode=TwoWay}" TextColor="White" PlaceholderColor="White" FontSize="Medium" Keyboard="Numeric"  />
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="{StaticResource Primary}"  HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Save" Command="{Binding SaveCommand}" BackgroundColor="{StaticResource Primary}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

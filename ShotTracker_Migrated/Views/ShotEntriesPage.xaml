@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodels="clr-namespace:ShotTracker.ViewModels"
+             xmlns:models="clr-namespace:ShotTracker.Models"
+             x:Class="ShotTracker.Views.ShotEntriesPage"
+             Title="{Binding Title}"
+             x:Name="BrowseItemsPage"
+             x:DataType="viewmodels:ShotEntriesViewModel"
+             BackgroundColor="#202020"
+             >
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#202020" StatusBarStyle="LightContent" />
+    </ContentPage.Behaviors>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="icon_add.png" Command="{Binding AddShotEntryCommand}" />
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <BoxView Style="{StaticResource Separator}" />
+        <Label Text="{Binding OverallPercentage}" HorizontalOptions="CenterAndExpand" TextColor="White" FontAttributes="Bold" FontSize="Large"></Label>
+        <BoxView Style="{StaticResource Separator}" />
+        <ListView ItemsSource="{Binding ShotEntries}" SelectedItem="{Binding SelectedShotEntry, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:ShotEntry">
+                    <TextCell Text="{Binding TextResult}" TextColor="White" Detail="{Binding Date}" DetailColor="Gray" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+    
+</ContentPage>

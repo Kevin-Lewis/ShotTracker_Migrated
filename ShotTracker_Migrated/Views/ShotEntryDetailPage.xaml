@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewmodels="clr-namespace:ShotTracker.ViewModels" x:DataType="viewmodels:ShotEntryDetailViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="ShotTracker.Views.ShotEntryDetailPage"
+             Title="{Binding Title}"
+             BackgroundColor="#202020">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#202020" StatusBarStyle="LightContent" />
+    </ContentPage.Behaviors>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="icon_edit.png" Command="{Binding EditShotEntryCommand}" />
+        <ToolbarItem IconImageSource="icon_trash.png" Command="{Binding DeleteShotEntryCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <Label Text="{Binding TextResult}" TextColor="White" FontSize="Large" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
+        <Label Text="{Binding Date}" TextColor="Gray"  FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
+    </StackLayout>
+</ContentPage>

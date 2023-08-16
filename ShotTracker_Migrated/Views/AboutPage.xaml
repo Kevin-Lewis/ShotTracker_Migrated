@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="ShotTracker.Views.AboutPage"
+             xmlns:vm="clr-namespace:ShotTracker.ViewModels"
+             Title="{Binding Title}"
+             BackgroundColor="#202020">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#202020" StatusBarStyle="LightContent" />
+    </ContentPage.Behaviors>
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ScrollView Grid.Row="0">
+            <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
+                <Label Text="Developed By Kevin Lewis" 
+                   TextColor="White" 
+                   FontSize="Title" 
+                   HorizontalOptions="Center" />
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
