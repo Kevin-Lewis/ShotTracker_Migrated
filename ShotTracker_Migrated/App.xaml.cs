@@ -1,11 +1,5 @@
 ﻿using ShotTracker.Data;
 using ShotTracker.Services;
-using ShotTracker.Views;
-using System;
-using System.IO;
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
-using ShotTracker;
 
 namespace ShotTracker
 {
@@ -23,7 +17,7 @@ namespace ShotTracker
                     {
                         string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
                         string subFolderPath = Path.Combine(folderPath, ".local", "share");
-                        string dbPath = Path.Combine(subFolderPath, "ShotEntries.db3");
+                        var dbPath = Path.Combine(subFolderPath, "ShotEntries.db3");
 
                         Directory.CreateDirectory(subFolderPath);
 
