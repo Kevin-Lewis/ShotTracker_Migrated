@@ -30,6 +30,12 @@
                    TextColor="White" 
                    FontSize="Title" 
                    HorizontalOptions="Center" />
+                <Button Text="Read our Privacy Policy"
+                    TextColor="AliceBlue"
+                    BackgroundColor="Transparent"
+                    Command="{Binding TapCommand}"
+                    CommandParameter="https://github.com/Kevin-Lewis/ShotTracker/blob/master/ShotTracker/ShotTracker/PrivacyPolicy.txt"
+                    HorizontalOptions="CenterAndExpand"/>
             </StackLayout>
         </ScrollView>
     </Grid>

@@ -7,6 +7,7 @@ namespace ShotTracker.ViewModels
 {
     public class AboutViewModel : BaseViewModel
     {
+        public Command TapCommand => new Command<string>(async (url) => await Launcher.OpenAsync(url));
         public AboutViewModel()
         {
             Title = "About";
