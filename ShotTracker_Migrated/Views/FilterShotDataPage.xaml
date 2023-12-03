@@ -40,6 +40,17 @@
                             <x:String>Today</x:String>
                         </x:Array>
                     </Picker.ItemsSource>
+                </Picker> 
+                <Label TextColor="White" FontSize="Large" Text="On This Court Type:"></Label>
+                <Picker Title="" TitleColor="Gray" TextColor="White" SelectedItem="{Binding SelectedCourtType, Mode=TwoWay}">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>All</x:String>
+                            <x:String>Indoor</x:String>
+                            <x:String>Outdoor</x:String>
+                            <x:String>Unspecified</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
                 </Picker>
             </StackLayout>
         </ScrollView>

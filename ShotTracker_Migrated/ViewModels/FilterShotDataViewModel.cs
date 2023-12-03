@@ -10,6 +10,7 @@ namespace ShotTracker.ViewModels
     public class FilterShotDataViewModel : BaseViewModel
     {
         private string _filterRange;
+        private string _courtType;
         public FilterShotDataViewModel()
         {
             Title = "Filter";
@@ -30,6 +31,19 @@ namespace ShotTracker.ViewModels
             {
                 _filterRange = value;
                 Task.Run(async () => await UpdateSetting(value));
+            }
+        }
+
+        public string SelectedCourtType
+        {
+            get
+            {
+                return _courtType;
+            }
+            set
+            {
+                _courtType = value;
+                //Task.Run(async () => await UpdateSetting(value));
             }
         }
 
