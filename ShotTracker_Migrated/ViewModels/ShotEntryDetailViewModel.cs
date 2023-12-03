@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
+using ShotTracker.Enums;
 
 namespace ShotTracker.ViewModels
 {
@@ -15,6 +16,7 @@ namespace ShotTracker.ViewModels
         private int _makes;
         private int _misses;
         private ShotLocation _location;
+        private CourtType _courtType;
         private DateTime _date;
 
         private ShotEntryDetailPage _parent;
@@ -55,10 +57,24 @@ namespace ShotTracker.ViewModels
             }
         }
 
+        public string TextCourtType
+        {
+            get
+            {
+                return $"{CourtType.GetDescription()}";
+            }
+        }
+
         public ShotLocation Location
         {
             get => _location;
             set => SetProperty(ref _location, value);
+        }
+
+        public CourtType CourtType
+        {
+            get => _courtType;
+            set => SetProperty(ref _courtType, value);
         }
 
         public int ID
@@ -93,8 +109,10 @@ namespace ShotTracker.ViewModels
                 Makes = item.Makes;
                 Misses = item.Misses;
                 Location = item.Location;
+                CourtType = item.CourtType;
                 Date = item.Date;
                 OnPropertyChanged(nameof(TextResult));
+                OnPropertyChanged(nameof(TextCourtType));
             }
             catch (Exception)
             {
@@ -104,7 +122,8 @@ namespace ShotTracker.ViewModels
 
         private async void OnEditShotEntry(object obj)
         {
-            await Shell.Current.GoToAsync($"{nameof(NewShotEntryPage)}?{nameof(NewShotEntryViewModel.LocationQueryString)}={(int)Location}&&{nameof(NewShotEntryViewModel.Makes)}={Makes}&&{nameof(NewShotEntryViewModel.Misses)}={Misses}&&{nameof(NewShotEntryViewModel.UpdateID)}={ID}");
+            var queryString = $"{(int)Location},{Makes},{Misses},{(int)CourtType},{ID}";
+            await Shell.Current.GoToAsync($"{nameof(NewShotEntryPage)}?QueryString={queryString}");
         }
 
         private async void OnDeleteShotEntry(object obj)

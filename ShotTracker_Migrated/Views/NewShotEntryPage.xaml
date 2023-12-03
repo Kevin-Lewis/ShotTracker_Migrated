@@ -5,6 +5,7 @@
              x:Class="ShotTracker.Views.NewShotEntryPage"
              Shell.PresentationMode="ModalAnimated"
              Title="New Entry"
+             xmlns:enums="clr-namespace:ShotTracker.Enums"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              ios:Page.UseSafeArea="true"
              BackgroundColor="#202020">
@@ -17,6 +18,16 @@
             <Entry Text="{Binding Makes, Mode=TwoWay}" TextColor="White" PlaceholderColor="White" FontSize="Medium" Keyboard="Numeric" />
             <Label Text="Misses" TextColor="White" FontSize="Medium" />
             <Entry Text="{Binding Misses, Mode=TwoWay}" TextColor="White" PlaceholderColor="White" FontSize="Medium" Keyboard="Numeric"  />
+            <Label Text="Court Type" TextColor="White" FontSize="Medium" />
+            <Picker Title="Select Court Type" SelectedItem="{Binding CourtType, Mode=TwoWay}" TextColor="White">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type enums:CourtType}">
+                        <x:Static Member="enums:CourtType.Unspecified" />
+                        <x:Static Member="enums:CourtType.Indoor" />
+                        <x:Static Member="enums:CourtType.Outdoor" />
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
             <StackLayout Orientation="Horizontal">
                 <Button Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="{StaticResource Primary}"  HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Save" Command="{Binding SaveCommand}" BackgroundColor="{StaticResource Primary}" HorizontalOptions="FillAndExpand"></Button>

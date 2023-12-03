@@ -16,6 +16,7 @@
 
     <StackLayout>
         <Label Text="{Binding TextResult}" TextColor="White" FontSize="Large" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
+        <Label Text="{Binding TextCourtType}" TextColor="Gray"  FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
         <Label Text="{Binding Date}" TextColor="Gray"  FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
     </StackLayout>
 </ContentPage>

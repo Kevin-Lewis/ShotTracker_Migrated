@@ -6,6 +6,7 @@
              Title="{Binding Title}"
              xmlns:local="clr-namespace:ShotTracker.ViewModels"
              xmlns:models="clr-namespace:ShotTracker.Models"
+             xmlns:enums="clr-namespace:ShotTracker.Enums"
              BackgroundColor="#202020">
     <ContentPage.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="#202020" StatusBarStyle="LightContent" />
@@ -48,57 +49,57 @@
                 <!-- Right Corner Three -->
                 <Button Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding RightCorner}" CornerRadius="35"                    
                     TextColor="Black" BackgroundColor="{Binding RightCornerBackground}" Opacity=".8"
-                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static models:ShotLocation.RightCorner}"/>
+                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static enums:ShotLocation.RightCorner}"/>
 
                 <!-- Right Wing Three -->
                 <Button Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="2" Text="{Binding RightWing}" CornerRadius="35"
                     TextColor="Black" BackgroundColor="{Binding RightWingBackground}" Opacity=".8"
-                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static models:ShotLocation.RightWing}"/>
+                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static enums:ShotLocation.RightWing}"/>
 
                 <!-- Top of the Key Three -->
                 <Button Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="2" Text="{Binding TopKey}" CornerRadius="35"
                     TextColor="Black" BackgroundColor="{Binding TopKeyBackground}" Opacity=".8"
-                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static models:ShotLocation.TopKey}"/>
+                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static enums:ShotLocation.TopKey}"/>
 
                 <!-- Left Wing Three -->
                 <Button Grid.Row="9" Grid.Column="6" Grid.ColumnSpan="2" Text="{Binding LeftWing}" CornerRadius="35"
                     TextColor="Black" BackgroundColor="{Binding LeftWingBackground}" Opacity=".8"
-                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static models:ShotLocation.LeftWing}"/>
+                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static enums:ShotLocation.LeftWing}"/>
 
                 <!-- Left Corner Three -->
                 <Button Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding LeftCorner}" CornerRadius="35"
                     TextColor="Black" BackgroundColor="{Binding LeftCornerBackground}" Opacity=".8"
-                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static models:ShotLocation.LeftCorner}"/>
+                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static enums:ShotLocation.LeftCorner}"/>
 
                 <!-- Short Right Corner -->
                 <Button Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding ShortRight}" CornerRadius="35"
                     TextColor="Black" BackgroundColor="{Binding ShortRightBackground}" Opacity=".8"
-                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static models:ShotLocation.ShortRight}"/>
+                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static enums:ShotLocation.ShortRight}"/>
 
                 <!-- Right Elbow -->
                 <Button Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Text="{Binding RightElbow}" CornerRadius="35"
                     TextColor="Black" BackgroundColor="{Binding RightElbowBackground}" Opacity=".8"
-                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static models:ShotLocation.RightElbow}"/>
+                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static enums:ShotLocation.RightElbow}"/>
 
                 <!-- Free Throw -->
                 <Button Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="2" Text="{Binding FreeThrow}" CornerRadius="35"
                     TextColor="Black" BackgroundColor="{Binding FreeThrowBackground}" Opacity=".8"
-                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static models:ShotLocation.FreeThrow}"/>
+                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static enums:ShotLocation.FreeThrow}"/>
 
                 <!-- Left Elbow -->
                 <Button Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="2" Text="{Binding LeftElbow}" CornerRadius="35"
                     TextColor="Black" BackgroundColor="{Binding LeftElbowBackground}" Opacity=".8"
-                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static models:ShotLocation.LeftElbow}"/>
+                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static enums:ShotLocation.LeftElbow}"/>
 
                 <!-- Short Left Corner -->
                 <Button Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding ShortLeft}" CornerRadius="35"
                     TextColor="Black" BackgroundColor="{Binding ShortLeftBackground}" Opacity=".8"
-                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static models:ShotLocation.ShortLeft}"/>
+                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static enums:ShotLocation.ShortLeft}"/>
 
                 <!-- In the Paint -->
                 <Button Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding Paint}" CornerRadius="35"
                     TextColor="Black" BackgroundColor="{Binding PaintBackground}" Opacity=".8"
-                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static models:ShotLocation.Paint}"/>
+                    Command="{Binding ZonePressedCommand}" CommandParameter="{x:Static enums:ShotLocation.Paint}"/>
             </Grid>
         </Grid>
     </ContentView>

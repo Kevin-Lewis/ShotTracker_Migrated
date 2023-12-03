@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ShotTracker.Models
+namespace ShotTracker.Enums
 {
     public enum ShotLocation
     {

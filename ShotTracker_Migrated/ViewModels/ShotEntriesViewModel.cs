@@ -9,6 +9,7 @@ using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using Plugin.Maui.AppRating;
 using ShotTracker.Services;
+using ShotTracker.Enums;
 
 namespace ShotTracker.ViewModels
 {
@@ -99,7 +100,8 @@ namespace ShotTracker.ViewModels
         private async void OnAddShotEntry(object obj)
         {
             _shotAdd = true;
-            await Shell.Current.GoToAsync($"{nameof(NewShotEntryPage)}?{nameof(NewShotEntryViewModel.LocationQueryString)}={Location}");
+            var queryString = $"{Location}";
+            await Shell.Current.GoToAsync($"{nameof(NewShotEntryPage)}?QueryString={queryString}");
         }
 
         private async void OnShotEntrySelected(ShotEntry entry)

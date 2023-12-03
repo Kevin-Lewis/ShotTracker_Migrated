@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using ShotTracker.Enums;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace ShotTracker.Models
         [PrimaryKey][AutoIncrement]
         public int ID { get; set; }
         public bool ReviewShown { get; set; } = false;
+        public CourtType LastUsedCourtType { get; set; } = CourtType.Unspecified;
     }
 }

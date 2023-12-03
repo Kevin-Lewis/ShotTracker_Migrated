@@ -6,19 +6,17 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
+using ShotTracker.Enums;
 
 namespace ShotTracker.ViewModels
 {
-    [QueryProperty(nameof(LocationQueryString), nameof(LocationQueryString))]
-    [QueryProperty(nameof(Makes), nameof(Makes))]
-    [QueryProperty(nameof(Misses), nameof(Misses))]
-    [QueryProperty(nameof(UpdateID), nameof(UpdateID))]
+    [QueryProperty(nameof(QueryString), nameof(QueryString))]
     public class NewShotEntryViewModel : BaseViewModel
     {
         private int _makes;
         private int _misses;
         private ShotLocation _location;
-        private string _locationQueryString;
+        private CourtType _courtType;
 
         private int _updateID = -1;
 
@@ -33,6 +31,30 @@ namespace ShotTracker.ViewModels
         private bool ValidateSave()
         {
             return true;
+        }
+
+        public string QueryString
+        {
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    var parts = value.Split(',');
+                    if (parts.Length == 1)
+                    {
+                        Location = (ShotLocation)int.Parse(parts[0]);
+                        CourtType = CourtType.Unspecified;
+                    }
+                    else if (parts.Length == 5)
+                    {
+                        Location = (ShotLocation)int.Parse(parts[0]);
+                        Makes = int.Parse(parts[1]);
+                        Misses = int.Parse(parts[2]);
+                        CourtType = (CourtType)int.Parse(parts[3]);
+                        UpdateID = int.Parse(parts[4]);
+                    }
+                }
+            }
         }
 
         public int Makes
@@ -59,17 +81,10 @@ namespace ShotTracker.ViewModels
             set => SetProperty(ref _location, value);
         }
 
-        public string LocationQueryString
+        public CourtType CourtType
         {
-            get => _locationQueryString;
-            set
-            {
-                if (_locationQueryString != value)
-                {
-                    _locationQueryString = value;
-                    _location = (ShotLocation)int.Parse(_locationQueryString);
-                }
-            }
+            get => _courtType;
+            set => SetProperty(ref _courtType, value);
         }
 
         public Command SaveCommand { get; }
@@ -90,6 +105,7 @@ namespace ShotTracker.ViewModels
                     Makes = Makes,
                     Misses = Misses,
                     Location = Location,
+                    CourtType = CourtType,
                     Date = DateTime.Now
                 };
                 await DataStore.AddShotEntryAsync(newItem);
@@ -106,6 +122,7 @@ namespace ShotTracker.ViewModels
             ShotEntry entry = DataStore.GetShotEntryAsync(UpdateID).Result;
             entry.Makes = Makes;
             entry.Misses = Misses;
+            entry.CourtType = CourtType;
             await DataStore.UpdateShotEntryAsync(entry);
         }
 

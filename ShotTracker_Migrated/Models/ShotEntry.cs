@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using ShotTracker.Enums;
+using SQLite;
 using System;
 
 namespace ShotTracker.Models
@@ -16,7 +17,15 @@ namespace ShotTracker.Models
                 return $"{Makes}/{Makes + Misses}";
             }
         }
+        public string TextCourtType
+        {
+            get
+            {
+                return $"{CourtType.GetDescription()}";
+            }
+        }
         public ShotLocation Location { get; set; }
+        public CourtType CourtType { get; set; }
         public DateTime Date {get; set;}
     }
 }

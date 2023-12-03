@@ -1,4 +1,5 @@
 ﻿using ShotTracker.Models;
+using ShotTracker.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
