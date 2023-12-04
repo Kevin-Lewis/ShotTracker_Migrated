@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using ShotTracker.Enums;
+using ShotTracker_Migrated.Enums;
 
 namespace ShotTracker.ViewModels
 {
@@ -54,9 +55,12 @@ namespace ShotTracker.ViewModels
             try
             {
                 ShotEntries.Clear();
-                FilterSetting setting = await DataStore.GetFilterSettingAsync(1);
-                if (setting is null) { setting = new FilterSetting() { ID = 1, Value = "All" };}
-                var items = (await DataStore.GetShotEntriesAsync(true)).Where(x => x.Date >= ReturnFilterDate(setting));
+                FilterSetting timeSetting = await DataStore.GetFilterSettingAsync((int)FilterType.TimeInterval);
+                FilterSetting courtTypeSetting = await DataStore.GetFilterSettingAsync((int)FilterType.CourtType);
+                if (timeSetting is null) { timeSetting = new FilterSetting() { ID = (int)FilterType.TimeInterval, Value = "All" };}
+                if (courtTypeSetting is null) { courtTypeSetting = new FilterSetting() { ID = (int)FilterType.CourtType, Value = "All" };}
+                var items = (await DataStore.GetShotEntriesAsync(true)).Where(x => x.Date >= ReturnFilterDate(timeSetting) 
+                                && (x.CourtType.GetDescription() == courtTypeSetting.Value || courtTypeSetting.Value == "All"));
                 foreach (var item in items)
                 {
                     ShotEntries.Add(item);

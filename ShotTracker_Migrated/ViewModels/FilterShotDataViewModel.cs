@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
+using ShotTracker_Migrated.Enums;
 
 namespace ShotTracker.ViewModels
 {
@@ -30,7 +31,7 @@ namespace ShotTracker.ViewModels
             set
             {
                 _filterRange = value;
-                Task.Run(async () => await UpdateSetting(value));
+                Task.Run(async () => await UpdateSetting(FilterType.TimeInterval, value));
             }
         }
 
@@ -43,24 +44,32 @@ namespace ShotTracker.ViewModels
             set
             {
                 _courtType = value;
-                //Task.Run(async () => await UpdateSetting(value));
+                Task.Run(async () => await UpdateSetting(FilterType.CourtType, value));
             }
         }
 
         private async Task LoadSetting()
         {
-            _filterRange = DataStore.GetFilterSettingAsync(1).Result?.Value;
+            _filterRange = DataStore.GetFilterSettingAsync((int)FilterType.TimeInterval).Result?.Value;
+            _courtType = DataStore.GetFilterSettingAsync((int)FilterType.CourtType).Result?.Value;
             if (_filterRange is null)
             {
-                await DataStore.AddFilterSettingAsync(new FilterSetting() { ID = 1, Value = "All" });
+                await DataStore.AddFilterSettingAsync(new FilterSetting() { ID = (int)FilterType.TimeInterval, Value = "All" });
                 _filterRange = "All";
             }
+            if (_courtType is null)
+            {
+                await DataStore.AddFilterSettingAsync(new FilterSetting() { ID = (int)FilterType.CourtType, Value = "All" });
+                _courtType = "All";
+            }
             OnPropertyChanged(nameof(SelectedFilterRange));
+            OnPropertyChanged(nameof(SelectedCourtType));
         }
 
-        private async Task UpdateSetting(string value)
+        private async Task UpdateSetting(FilterType filterType, string value)
         {
-            await DataStore.UpdateFilterSettingAsync(new FilterSetting() { ID = 1, Value = value });
+            int id = (int)filterType;
+            await DataStore.UpdateFilterSettingAsync(new FilterSetting() { ID = id, Value = value });
         }
     }
 }
